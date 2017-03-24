@@ -5,13 +5,13 @@ var utils = require('../../../utils');
 module.change_code = 1;
 
 // Define an alexa-app
-var app = new alexa.app('visual_description');
+var app = new alexa.app('emotion_detection');
 // app.launch(function(req, res) {
 //     utils.downloadKloudlessPhoto()
 //     res.say('Nothing is there in front of me.');
 // });
 
-app.intent('SceneIntent', {
+app.intent('EmotionIntent', {
     // "slots": { "NAME": "LITERAL", "AGE": "NUMBER" },
     "utterances": ["Describe the person's emotions"]
 }, function(req, res) {
