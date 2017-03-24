@@ -1,0 +1,56 @@
+{
+  "intents": [
+    {
+      "intent": "AMAZON.PauseIntent"
+    },
+    {
+      "intent": "AMAZON.ResumeIntent"
+    },
+    {
+      "intent": "AMAZON.NextIntent"
+    },
+    {
+      "intent": "AMAZON.PreviousIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    },
+    {
+      "intent": "AMAZON.StartOverIntent"
+    },
+    {
+      "intent": "AMAZON.YesIntent"
+    },
+    {
+      "intent": "AMAZON.NoIntent"
+    },
+    {
+      "intent": "NameIntent",
+      "slots": [
+        {
+          "name": "NAME",
+          "type": "LITERAL"
+        },
+        {
+          "name": "AGE",
+          "type": "NUMBER"
+        }
+      ]
+    },
+    {
+      "intent": "AgeIntent",
+      "slots": [
+        {
+          "name": "AGE",
+          "type": "NUMBER"
+        }
+      ]
+    }
+  ]
+}
