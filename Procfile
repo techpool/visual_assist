@@ -1,1 +1,2 @@
-web: resources/alexa_apps/ node server
+web: cd resources/alexa_apps/ 
+web: node server
