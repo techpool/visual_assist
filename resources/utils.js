@@ -2,6 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var request = require('request');
 var cheerio = require('cheerio');
+var qs = require('querystring')
 
 var isValidDirectory = function(dir) {
     return fs.existsSync(dir) && fs.statSync(dir).isDirectory();
@@ -105,13 +106,48 @@ var downloadKloudlessPhoto = function(callback) {
                 var $ = cheerio.load(body);
                 var title = $('meta[property="og:image"]').attr('content')
                 cb(null, title)
-                // console.log(title)
+                    // console.log(title)
             });
         }
     ], function(error, url) {
-        callback(error, url)
+
+        for (var i = 0; i < url.length; i++) {
+            var eachUrl = url[i];
+            if (eachUrl) {
+                callback(error, eachUrl)
+                break;
+            }
+        }
     });
 }
+
+var generateComputerVision = function(url, callback) {
+    const COMPUTER_VISION_KEY = '3936f08cea1f4a578988ef3cbf38cf0c';
+    var query = {
+        'visualFeatures': 'Tags,Description',
+        'language': 'en'
+    }
+    console.log(qs.stringify(query));
+
+    var requestOptions = {
+        'uri': 'https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?' + qs.stringify(query),
+        'method': 'POST',
+        'headers': {
+            'Ocp-Apim-Subscription-Key': COMPUTER_VISION_KEY,
+            'Content-Type': 'application/json'
+        },
+        'json': {
+            "url": url
+        }
+    }
+
+    request(requestOptions, function(error, response, body) {
+        console.log(JSON.stringify(body));
+        callback(body)
+    });
+}
+
+// generateComputerVision()
 
 module.exports = {
     isValidDirectory: isValidDirectory,
@@ -119,5 +155,6 @@ module.exports = {
     readFile: readFile,
     readJsonFile: readJsonFile,
     normalizeApiPath: normalizeApiPath,
-    downloadKloudlessPhoto: downloadKloudlessPhoto
+    downloadKloudlessPhoto: downloadKloudlessPhoto,
+    generateComputerVision: generateComputerVision
 };
