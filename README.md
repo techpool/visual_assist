@@ -1,5 +1,5 @@
 # Visual_Assist
-A visual aide designed to improve life of the visually impaired by enabling them to have better understanding of their environment and everyday aquiantances.
+A visual aide designed to improve life of the visually impaired by enabling them to have better understanding of their environment and everyday acquaintances.
 
 # Software stack
 * Amazon Alexa skill kit
@@ -13,4 +13,5 @@ A visual aide designed to improve life of the visually impaired by enabling them
 *  Raspberry Pi camera 
 *  Microphone
 
+# [Backend architecture](https://github.com/techpool/continuous_photo)
 
