@@ -147,10 +147,10 @@ var generateComputerVision = function(url, callback) {
     });
 }
 
-var getRestDbVisionMessage = function(callback) {
+var getRestDbMessage = function(collection , callback) {
     const REST_DB_API_KEY = '2dbd5be6c5a14f7a7afd555d0d1403c9b84ab';
     var requestOptions = {
-        'uri': 'https://technica-7f86.restdb.io/rest/visionapi',
+        'uri': 'https://technica-7f86.restdb.io/rest/' + collection,
         'method': 'GET',
         'headers': {
             'cache-control': 'no-cache',
@@ -186,5 +186,5 @@ module.exports = {
     normalizeApiPath: normalizeApiPath,
     downloadKloudlessPhoto: downloadKloudlessPhoto,
     generateComputerVision: generateComputerVision,
-    getRestDbVisionMessage: getRestDbVisionMessage
+    getRestDbMessage: getRestDbMessage
 };

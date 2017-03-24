@@ -13,12 +13,12 @@ var app = new alexa.app('visual_description');
 
 app.intent('SceneIntent', {
     // "slots": { "NAME": "LITERAL", "AGE": "NUMBER" },
-    "utterances": ["What is there in front of me"]
+    "utterances": ["Describe the person's emotions"]
 }, function(req, res) {
 
 
     return new Promise(function(resolve, reject) {
-        utils.getRestDbMessage('visionapi', function(responseMessage) {
+        utils.getRestDbMessage('emotionapi', function(responseMessage) {
             res.say(responseMessage);
             resolve()
         });

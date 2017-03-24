@@ -1,5 +1,5 @@
 {
-  "name": "emotion_detection",
+  "name": "visual_description",
   "version": "1.0.0",
   "description": "A sample Alexa app",
   "main": "index.js",
