@@ -18,26 +18,9 @@ app.intent('SceneIntent', {
 
 
     return new Promise(function(resolve, reject) {
-        utils.downloadKloudlessPhoto(function(error, imageUrl) {
-            if (error) {
-                console.log(error);
-            } else {
-                console.log('---------------')
-                console.log(imageUrl)
-                console.log('---------------')
-                utils.generateComputerVision(imageUrl, function(responseBody) {
-                    var responseText = 'I think it is ';
-                    responseText += responseBody.description.captions[0].text;
-                    responseText += '. The keywords are '
-                    for (var i = 0; i < responseBody.tags.length; i++) {
-                        var eachTag = responseBody.tags[i];
-                        responseText += eachTag.name + ', ';
-                    }
-
-                    res.say(responseText);
-                    resolve()
-                });
-            }
+        utils.getRestDbVisionMessage(function(responseMessage) {
+            res.say(responseMessage);
+            resolve()
         });
     });
 });

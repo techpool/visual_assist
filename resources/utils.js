@@ -147,6 +147,35 @@ var generateComputerVision = function(url, callback) {
     });
 }
 
+var getRestDbVisionMessage = function(callback) {
+    const REST_DB_API_KEY = '2dbd5be6c5a14f7a7afd555d0d1403c9b84ab';
+    var requestOptions = {
+        'uri': 'https://technica-7f86.restdb.io/rest/visionapi',
+        'method': 'GET',
+        'headers': {
+            'cache-control': 'no-cache',
+            'x-apikey': REST_DB_API_KEY,
+            'Content-Type': 'application/json'
+        },
+        json: true
+    }
+
+    request(requestOptions, function(error, response, body) {
+        if (error) {
+            callback(error);
+            return;
+        }
+        // console.log(JSON.stringify(body));
+
+        if (body.length == 0) {
+            callback('I cannot see anything.')
+        } else {
+            // cb(null, 'PUT', responseText);
+            callback(body[0].message);
+        }
+    });
+}
+
 // generateComputerVision()
 
 module.exports = {
@@ -156,5 +185,6 @@ module.exports = {
     readJsonFile: readJsonFile,
     normalizeApiPath: normalizeApiPath,
     downloadKloudlessPhoto: downloadKloudlessPhoto,
-    generateComputerVision: generateComputerVision
+    generateComputerVision: generateComputerVision,
+    getRestDbVisionMessage: getRestDbVisionMessage
 };
