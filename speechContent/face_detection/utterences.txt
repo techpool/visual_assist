@@ -1,1 +1,2 @@
-FaceIntent this is {NAME} and she is {RELATION} of mine.
+FaceIntent this is {NAME}
+FaceDescribeIntent Who is in front of me

@@ -12,25 +12,20 @@ var app = new alexa.app('face_detection');
 // });
 
 app.intent('FaceIntent', {
-    "slots": { "NAME": "LITERAL", "RELATION": "LITERAL" },
-    "utterances": ["this is {NAME} and she is {RELATION} of mine"]
+    "slots": { "NAME": "LITERAL"},
+    "utterances": ["this is {NAME}"]
 }, function(req, res) {
 
-
     return new Promise(function(resolve, reject) {
-    	res.say('Your have met ' + req.slot('NAME') + ' and she is a ' + req.slot('RELATION'));
+    	utils.submitNewFace(req.slot('NAME'));
+    	res.say('All right! Your have met ' + req.slot('NAME') + ', and I have kept a note of it.');
     	resolve();
-        // utils.getRestDbMessage('emotionapi', function(responseMessage) {
-        //     res.say(responseMessage);
-        //     resolve()
-        // });
     });
 });
 
 app.intent('FaceDescribeIntent', {
     "utterances": ["Who is in front of me"]
 }, function(req, res) {
-
 
     return new Promise(function(resolve, reject) {
     	

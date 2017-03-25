@@ -176,6 +176,21 @@ var getRestDbMessage = function(collection , callback) {
     });
 }
 
+var submitNewFace = function(faceName) {
+    var requestOptions = {
+        'uri': 'https://alexatechnica.herokuapp.com/processFace?groupName=friends&faceName=' + faceName,
+        'method': 'GET',
+        json: true
+    }
+
+    request(requestOptions, function(error, response, body) {
+        if (error) {
+            callback(error);
+            return;
+        }
+    });
+}
+
 // generateComputerVision()
 
 module.exports = {
@@ -186,5 +201,6 @@ module.exports = {
     normalizeApiPath: normalizeApiPath,
     downloadKloudlessPhoto: downloadKloudlessPhoto,
     generateComputerVision: generateComputerVision,
-    getRestDbMessage: getRestDbMessage
+    getRestDbMessage: getRestDbMessage,
+    submitNewFace: submitNewFace
 };

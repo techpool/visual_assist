@@ -36,12 +36,11 @@
         {
           "name": "NAME",
           "type": "LITERAL"
-        },
-        {
-          "name": "RELATION",
-          "type": "LITERAL"
         }
       ]
+    },
+    {
+      "intent": "FaceDescribeIntent"
     }
   ]
 }
