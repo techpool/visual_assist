@@ -13,7 +13,7 @@ var app = new alexa.app('face_detection');
 
 app.intent('FaceIntent', {
     "slots": { "NAME": "LITERAL", "RELATION": "LITERAL" },
-    "utterances": ["{this is {NAME} and she is {RELATION} of mine"]
+    "utterances": ["this is {NAME} and she is {RELATION} of mine"]
 }, function(req, res) {
 
 
@@ -24,6 +24,20 @@ app.intent('FaceIntent', {
         //     res.say(responseMessage);
         //     resolve()
         // });
+    });
+});
+
+app.intent('FaceDescribeIntent', {
+    "utterances": ["Who is in front of me"]
+}, function(req, res) {
+
+
+    return new Promise(function(resolve, reject) {
+    	
+        utils.getRestDbMessage('faceapi', function(responseMessage) {
+            res.say(responseMessage);
+            resolve()
+        });
     });
 });
 
